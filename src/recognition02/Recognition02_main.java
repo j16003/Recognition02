@@ -19,7 +19,9 @@ public class Recognition02_main {
 		// TODO 自動生成されたメソッド・スタブ
 
 		VisualRecognition service = new VisualRecognition("2018-03-19");
-		service.setApiKey("j16003");
+		service.setApiKey("J16003");
+
+		MySQL mysql = new MySQL();
 
 		InputStream imagesStream = null;
 		try {
@@ -55,6 +57,8 @@ public class Recognition02_main {
 			System.out.println("color2 : " + color2);
 			Double color_score2 = node.get("images").get(0).get("classifiers").get(0).get("classes").get(2).get("score").asDouble();
 			System.out.println("color_score2 : " + color_score2);
+
+			mysql.updateImage(object,object_score,color1,color_score1,color2,color_score2);
 		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
